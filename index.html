@@ -7,57 +7,64 @@ import {
   TrendingUp, AlertTriangle, Link, Search, 
   CheckCircle2, AlertCircle, FileText, Activity,
   Rocket, Target, Globe, ArrowUpRight, PlusCircle, Sparkles,
-  MapPin, Star, MessageSquare, Map, Navigation, Phone
+  MapPin, Star, MessageSquare, Map, Phone
 } from 'lucide-react';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
-  // Данные трафика
+  // Данные трафика с уникальными ID для ключей
   const trafficData = [
-    { date: '2024-02', traffic: 1, type: 'actual' },
-    { date: '2024-06', traffic: 150, type: 'actual' },
-    { date: '2024-10', traffic: 450, type: 'actual' },
-    { date: '2025-02', traffic: 850, type: 'actual' },
-    { date: '2025-06', traffic: 1100, type: 'actual' },
-    { date: '2026-02', traffic: 1237, type: 'actual' },
-    { date: '2026-05', traffic: 1450, type: 'forecast' },
-    { date: '2026-08', traffic: 1720, type: 'forecast' },
+    { id: 1, date: '2024-02', traffic: 1, type: 'actual' },
+    { id: 2, date: '2024-06', traffic: 150, type: 'actual' },
+    { id: 3, date: '2024-10', traffic: 450, type: 'actual' },
+    { id: 4, date: '2025-02', traffic: 850, type: 'actual' },
+    { id: 5, date: '2025-06', traffic: 1100, type: 'actual' },
+    { id: 6, date: '2026-02', traffic: 1237, type: 'actual' },
+    { id: 7, date: '2026-05', traffic: 1450, type: 'forecast' },
+    { id: 8, date: '2026-08', traffic: 1720, type: 'forecast' },
   ];
 
   // Данные для GMB / Local SEO
   const localVisibility = [
-    { month: 'Сен', maps: 450, search: 310 },
-    { month: 'Окт', maps: 520, search: 380 },
-    { month: 'Ноя', maps: 480, search: 410 },
-    { month: 'Дек', maps: 610, search: 450 },
-    { month: 'Янв', maps: 720, search: 490 },
-    { month: 'Фев', maps: 850, search: 540 },
+    { id: 'l1', month: 'Сен', maps: 450, search: 310 },
+    { id: 'l2', month: 'Окт', maps: 520, search: 380 },
+    { id: 'l3', month: 'Ноя', maps: 480, search: 410 },
+    { id: 'l4', month: 'Дек', maps: 610, search: 450 },
+    { id: 'l5', month: 'Янв', maps: 720, search: 490 },
+    { id: 'l6', month: 'Фев', maps: 850, search: 540 },
   ];
 
   const reviewBreakdown = [
-    { name: '5 звезд', value: 42, color: '#10b981' },
-    { name: '4 звезды', value: 4, color: '#3b82f6' },
-    { name: '3 звезды', value: 1, color: '#f59e0b' },
+    { id: 'r1', name: '5 звезд', value: 42, color: '#10b981' },
+    { id: 'r2', name: '4 звезды', value: 4, color: '#3b82f6' },
+    { id: 'r3', name: '3 звезды', value: 1, color: '#f59e0b' },
+  ];
+
+  const growthPotential = [
+    { id: 'g1', category: 'Брендовые', current: 311, potential: 500, color: '#6366f1' },
+    { id: 'g2', category: 'IV Infusions', current: 442, potential: 2500, color: '#10b981' },
+    { id: 'g3', category: 'Longevity', current: 70, potential: 1200, color: '#f59e0b' },
+    { id: 'g4', category: 'Mental Health', current: 51, potential: 3000, color: '#ec4899' },
   ];
 
   const existingPagesPotential = [
-    { url: '/alopecia/', title: 'Understanding Alopecia', words: 1703, status: 'High Potential', reason: 'Большой объем текста, нужен LSI и внутренняя перелинковка.' },
-    { url: '/mental-health/', title: 'Mental Health & Balance', words: 1225, status: 'Growth', reason: 'Хороший интент, требует добавления экспертных блоков.' },
-    { url: '/migraine-headache/', title: 'How to tackle migraine', words: 950, status: 'Optimization', reason: 'Нужна оптимизация под "IV therapy for migraine".' }
+    { id: 'ep1', url: '/alopecia/', title: 'Understanding Alopecia', words: 1703, status: 'High Potential', reason: 'Большой объем текста, нужен LSI и внутренняя перелинковка.' },
+    { id: 'ep2', url: '/mental-health/', title: 'Mental Health & Balance', words: 1225, status: 'Growth', reason: 'Хороший интент, требует добавления экспертных блоков.' },
+    { id: 'ep3', url: '/migraine-headache/', title: 'How to tackle migraine', words: 950, status: 'Optimization', reason: 'Нужна оптимизация под "IV therapy for migraine".' }
   ];
 
   const intentGapPages = [
-    { category: 'Vitamin Specific', pages: ['Vitamin B12 Shots', 'High Dose Vit C Drip', 'NAD+ Therapy'], intent: 'Transactional' },
-    { category: 'Longevity/Biohacking', pages: ['Biohacking Amsterdam Guide', 'Biological Age Testing'], intent: 'Informational' },
-    { category: 'Lifestyle', pages: ['Jet Lag Recovery IV', 'Beauty & Glow Drip'], intent: 'Local/Local' }
+    { id: 'gap1', category: 'Vitamin Specific', pages: ['Vitamin B12 Shots', 'High Dose Vit C Drip', 'NAD+ Therapy'], intent: 'Transactional' },
+    { id: 'gap2', category: 'Longevity/Biohacking', pages: ['Biohacking Amsterdam Guide', 'Biological Age Testing'], intent: 'Informational' },
+    { id: 'gap3', category: 'Lifestyle', pages: ['Jet Lag Recovery IV', 'Beauty & Glow Drip'], intent: 'Local/Local' }
   ];
 
   const positionData = [
-    { name: 'Топ 1-3', value: 58, color: '#10b981' },
-    { name: 'Топ 4-10', value: 11, color: '#3b82f6' },
-    { name: 'Топ 11-20', value: 73, color: '#6366f1' },
-    { name: 'Топ 21-50', value: 131, color: '#f59e0b' },
+    { id: 'p1', name: 'Топ 1-3', value: 58, color: '#10b981' },
+    { id: 'p2', name: 'Топ 4-10', value: 11, color: '#3b82f6' },
+    { id: 'p3', name: 'Топ 11-20', value: 73, color: '#6366f1' },
+    { id: 'p4', name: 'Топ 21-50', value: 131, color: '#f59e0b' },
   ];
 
   const StatCard = ({ title, value, icon: Icon, trend, color }) => (
@@ -91,13 +98,13 @@ const App = () => {
               <p className="text-slate-500 mt-1">Аналитический отчет и прогноз роста до августа 2026 г.</p>
             </div>
             <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
-              {['overview', 'growth', 'local', 'technical'].map((tab) => (
+              {['overview', 'growth', 'local'].map((tab) => (
                 <button 
-                  key={`tab-${tab}`}
+                  key={`tab-btn-${tab}`}
                   onClick={() => setActiveTab(tab)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === tab ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-600 hover:bg-slate-50'}`}
                 >
-                  {tab === 'overview' ? 'Обзор' : tab === 'growth' ? 'Перспективы роста' : tab === 'local' ? 'Локальное SEO / GMB' : 'Тех. аудит'}
+                  {tab === 'overview' ? 'Обзор' : tab === 'growth' ? 'Перспективы роста' : 'Локальное SEO / GMB'}
                 </button>
               ))}
             </div>
@@ -135,9 +142,10 @@ const App = () => {
                         dot={(props) => {
                           const { cx, cy, payload } = props;
                           if (payload.type === 'actual') {
-                            return <circle key={`dot-${payload.date}`} cx={cx} cy={cy} r={4} fill="#4f46e5" />;
+                            // Ключ берется из данных для стабильности
+                            return <circle key={`dot-actual-${payload.id}`} cx={cx} cy={cy} r={4} fill="#4f46e5" />;
                           }
-                          return null;
+                          return <React.Fragment key={`dot-forecast-${payload.id}`} />;
                         }}
                       />
                     </ComposedChart>
@@ -156,8 +164,8 @@ const App = () => {
                       <YAxis dataKey="name" type="category" stroke="#64748b" fontSize={12} width={70} tickLine={false} axisLine={false} />
                       <Tooltip cursor={{fill: '#f8fafc'}} />
                       <Bar dataKey="value" radius={[0, 4, 4, 0]}>
-                        {positionData.map((entry, index) => (
-                          <Cell key={`cell-pos-${index}`} fill={entry.color} />
+                        {positionData.map((entry) => (
+                          <Cell key={`cell-pos-${entry.id}`} fill={entry.color} />
                         ))}
                       </Bar>
                     </BarChart>
@@ -210,8 +218,8 @@ const App = () => {
                           paddingAngle={5}
                           dataKey="value"
                         >
-                          {reviewBreakdown.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          {reviewBreakdown.map((entry) => (
+                            <Cell key={`cell-review-${entry.id}`} fill={entry.color} />
                           ))}
                         </Pie>
                         <Tooltip />
@@ -219,8 +227,8 @@ const App = () => {
                     </ResponsiveContainer>
                    </div>
                    <div className="w-1/2 space-y-4">
-                      {reviewBreakdown.map((item, idx) => (
-                        <div key={idx} className="flex items-center justify-between">
+                      {reviewBreakdown.map((item) => (
+                        <div key={`legend-${item.id}`} className="flex items-center justify-between">
                           <span className="text-xs font-medium text-slate-500">{item.name}</span>
                           <span className="text-sm font-bold text-slate-700">{item.value}</span>
                         </div>
@@ -231,42 +239,6 @@ const App = () => {
                         </p>
                       </div>
                    </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <CheckCircle2 className="w-6 h-6 text-emerald-500" /> План оптимизации Google My Business
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-slate-800 text-sm mb-2">1. Категории и Услуги</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Убедитесь, что основной категорией выбрано <span className="text-indigo-600 font-bold">Medical Clinic</span> или <span className="text-indigo-600 font-bold">Health and Wellness Center</span>. Добавьте услуги: IV Therapy, Longevity Consultation, Vitamin Infusions.
-                    </p>
-                  </div>
-                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-slate-800 text-sm mb-2">2. Локальный контент</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Еженедельно публикуйте Google Posts с упоминанием Амстердама. Например: "Best IV clinic in Amsterdam Oud-Zuid". Это усиливает привязку к локации.
-                    </p>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-slate-800 text-sm mb-2">3. Фотографии (E-E-A-T)</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Необходимо добавить минимум 10 фото интерьера и оборудования. Фото стерильных кабинетов для инфузий повышают доверие и CTR в Картах.
-                    </p>
-                  </div>
-                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-slate-800 text-sm mb-2">4. NAP Консистентность</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Проверьте, чтобы адрес и телефон на сайте (`footer`) в точности совпадали с данными в GMB. Любое расхождение (например, Street vs St.) снижает доверие Google.
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -287,94 +259,79 @@ const App = () => {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <div>
-                  <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6 flex items-center gap-2">
+                <div className="space-y-6">
+                  <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
                     <Target className="w-4 h-4" /> Потенциал охвата по категориям
                   </h4>
-                  <div className="space-y-6">
-                    {growthPotential.map((item, idx) => (
-                      <div key={`growth-${idx}`} className="space-y-2">
-                        <div className="flex justify-between text-sm">
-                          <span className="font-semibold text-slate-700">{item.category}</span>
-                          <span className="text-slate-400">Текущий: {item.current} / <span className="text-indigo-600 font-bold">{item.potential}</span></span>
-                        </div>
-                        <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                          <div 
-                            className="h-full rounded-full transition-all duration-1000" 
-                            style={{ width: `${(item.current / item.potential) * 100}%`, backgroundColor: item.color }}
-                          ></div>
-                        </div>
+                  {growthPotential.map((item) => (
+                    <div key={`growth-prog-${item.id}`} className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="font-semibold text-slate-700">{item.category}</span>
+                        <span className="text-slate-400">Текущий: {item.current} / <span className="text-indigo-600 font-bold">{item.potential}</span></span>
                       </div>
-                    ))}
-                  </div>
+                      <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full rounded-full transition-all duration-1000" 
+                          style={{ width: `${(item.current / item.potential) * 100}%`, backgroundColor: item.color }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                    <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2 text-sm">
-                      <Sparkles className="w-4 h-4 text-amber-500" /> Основной вектор (2026)
-                    </h4>
-                    <ul className="space-y-3">
-                      <li className="flex gap-3 items-start text-xs text-slate-600">
-                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1 shrink-0"></div>
-                        <span><strong>Локальный захват:</strong> Использование интента "Amsterdam" для всех IV-услуг.</span>
-                      </li>
-                      <li className="flex gap-3 items-start text-xs text-slate-600">
-                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1 shrink-0"></div>
-                        <span><strong>Мультиязычность:</strong> Перевод ключевых страниц Alopecia/Migraine на английский.</span>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                  <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2 text-sm">
+                    <Sparkles className="w-4 h-4 text-amber-500" /> Основной вектор (2026)
+                  </h4>
+                  <ul className="space-y-3">
+                    <li className="flex gap-3 items-start text-xs text-slate-600">
+                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1 shrink-0"></div>
+                      <span><strong>Локальный захват:</strong> Использование интента "Amsterdam" для всех IV-услуг.</span>
+                    </li>
+                    <li className="flex gap-3 items-start text-xs text-slate-600">
+                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1 shrink-0"></div>
+                      <span><strong>Мультиязычность:</strong> Перевод ключевых страниц на английский.</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                <div className="flex items-center gap-2 mb-6">
-                  <Activity className="w-5 h-5 text-indigo-500" />
-                  <h3 className="text-lg font-bold text-slate-800">Существующие страницы с потенциалом</h3>
-                </div>
+                <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                  <Activity className="w-5 h-5 text-indigo-500" /> Существующие страницы с потенциалом
+                </h3>
                 <div className="space-y-4">
-                  {existingPagesPotential.map((page, idx) => (
-                    <div key={`exist-${idx}`} className="p-4 rounded-xl border border-slate-50 bg-slate-50/30 hover:bg-white hover:shadow-md transition-all cursor-default">
-                      <div className="flex justify-between items-start mb-2">
-                        <div>
-                          <h4 className="font-bold text-slate-800 text-sm">{page.title}</h4>
-                          <span className="text-[10px] text-indigo-500 font-mono tracking-tighter uppercase">{page.url}</span>
-                        </div>
+                  {existingPagesPotential.map((page) => (
+                    <div key={`exist-p-${page.id}`} className="p-4 rounded-xl border border-slate-50 bg-slate-50/30 hover:bg-white hover:shadow-md transition-all">
+                      <div className="flex justify-between items-start mb-1">
+                        <h4 className="font-bold text-slate-800 text-sm">{page.title}</h4>
                         <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-[10px] font-bold">
                           {page.status}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-500 leading-relaxed italic">
-                        {page.reason} <span className="text-slate-400 font-medium whitespace-nowrap ml-1">({page.words} слов)</span>
-                      </p>
+                      <p className="text-xs text-slate-500 italic">{page.reason}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                <div className="flex items-center gap-2 mb-6">
-                  <PlusCircle className="w-5 h-5 text-emerald-500" />
-                  <h3 className="text-lg font-bold text-slate-800">Недостающие страницы</h3>
-                </div>
+                <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                  <PlusCircle className="w-5 h-5 text-emerald-500" /> Недостающие страницы
+                </h3>
                 <div className="space-y-6">
-                  {intentGapPages.map((group, idx) => (
-                    <div key={`gap-${idx}`} className="space-y-3">
-                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest">{group.category}</h4>
-                      <ul className="space-y-2">
-                        {group.pages.map((p, pIdx) => (
-                          <li key={pIdx} className="flex items-center gap-2 text-sm text-slate-600">
-                            <ArrowUpRight className="w-3 h-3 text-emerald-400" />
-                            {p}
+                  {intentGapPages.map((group) => (
+                    <div key={`gap-group-${group.id}`} className="space-y-2">
+                      <h4 className="text-xs font-bold text-slate-400 uppercase">{group.category}</h4>
+                      <ul className="space-y-1">
+                        {group.pages.map((p, idx) => (
+                          <li key={`gap-p-${group.id}-${idx}`} className="flex items-center gap-2 text-sm text-slate-600">
+                            <ArrowUpRight className="w-3 h-3 text-emerald-400" /> {p}
                           </li>
                         ))}
                       </ul>
-                      <div className="text-[10px] px-2 py-1 bg-slate-100 text-slate-500 rounded inline-block">
-                        Тип интента: {group.intent}
-                      </div>
                     </div>
                   ))}
                 </div>
